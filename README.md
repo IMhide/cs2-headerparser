@@ -36,5 +36,5 @@ If anybody can help me.
 # The program
 
 It actually display the variables founded on three different demo, and shows the missing parts of the header that i wasn't able to figure out.
-![alt text](https://github.com/IMhide/cs2-headerparse/blob/master/screenshot.png?raw=true)
+![alt text](https://raw.githubusercontent.com/IMhide/cs2-headerparser/master/screenshot.png)
 
