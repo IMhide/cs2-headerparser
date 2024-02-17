@@ -47,6 +47,9 @@ func main() {
 //
 //
 
+// Note : Some of the variables of the protobuf doesn't show on my example sample so I didn't coded 'em
+// https://github.com/SteamDatabase/GameTracking-CS2/blob/master/Protobufs/demo.proto
+
 func printTable(anubisParser *bitread.BitReader, nukeParser *bitread.BitReader, mirageParser *bitread.BitReader){
   headerFmt := color.New(color.FgGreen, color.Underline).SprintfFunc()
   columnFmt := color.New(color.FgYellow).SprintfFunc()
@@ -74,6 +77,7 @@ func printTable(anubisParser *bitread.BitReader, nukeParser *bitread.BitReader, 
   tbl.AddRow("Demo Version Name",anubisParser.NewParseString(), nukeParser.NewParseString(), mirageParser.NewParseString())  
   tbl.AddRow("Skip 1 bytes", Advance(anubisParser, 1), Advance(nukeParser, 1),Advance(mirageParser, 1))
   tbl.AddRow("Demo Version GUID", anubisParser.NewParseString(), nukeParser.NewParseString(), mirageParser.NewParseString())  
+  tbl.AddRow("Build num", anubisParser.ReadSignedInt(32), nukeParser.ReadSignedInt(32), mirageParser.ReadSignedInt(32))
   tbl.AddRow("Next 32 bytes", Advance(anubisParser, 32), Advance(nukeParser, 32),Advance(mirageParser, 32))
 
   tbl.Print()
