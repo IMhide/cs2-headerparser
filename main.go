@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -10,9 +9,6 @@ import (
 	"github.com/fatih/color"
 	"github.com/rodaine/table"
 )
-
-const maxOsPath = 260
-
 
 func main() {
   anubisPath := "./demo/tn_anibus.dem"
@@ -45,7 +41,6 @@ func main() {
   printTable(anubisParser, mirageParser,nukeParser)
 }
 
-
 //
 //
 // Utils
@@ -75,14 +70,9 @@ func printTable(anubisParser *bitread.BitReader, nukeParser *bitread.BitReader, 
   tbl.AddRow("???", anubisParser.NewParseString(), nukeParser.NewParseString(), mirageParser.NewParseString())  
   tbl.AddRow("Skip 1 bytes", Advance(anubisParser, 1), Advance(nukeParser, 1),Advance(mirageParser, 1))
   tbl.AddRow("???", anubisParser.NewParseString(), nukeParser.NewParseString(), mirageParser.NewParseString())  
-  tbl.AddRow("32 bytes", Advance(anubisParser, 32), Advance(nukeParser, 32),Advance(mirageParser, 32))
+  tbl.AddRow("Next 32 bytes", Advance(anubisParser, 32), Advance(nukeParser, 32),Advance(mirageParser, 32))
 
   tbl.Print()
-}
-
-
-func printPosition(bitReader *bitread.BitReader){
-  fmt.Println("Lazy Position :", bitReader.BitReader.LazyPosition(), "| Actual position :", bitReader.BitReader.ActualPosition())
 }
 
 func Advance(parser *bitread.BitReader, bytes int) []byte{
